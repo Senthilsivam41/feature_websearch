@@ -1,62 +1,149 @@
-# Code Implementation Summary: Ollama Web Crawler
+# Ollama-Powered Web Crawler and Search Service
 
-## Core Components
+## Project Overview
 
-### 1. OllamaWebCrawlerService Class
-- Manages entire web crawling and search ecosystem
-- Integrates web scraping with local LLM models
+This project is an advanced web crawling and search service that leverages local Large Language Models (LLMs) through Ollama for intelligent content analysis, semantic search, and natural language interaction.
 
-### 2. Web Crawling Mechanism
-- Uses `requests` and `BeautifulSoup` for web scraping
-- Concurrent crawling with `ThreadPoolExecutor`
-- URL validation and sanitization
-- Configurable crawling depth
+## Key Features
 
-### 3. Database Management
-- SQLite for storing crawled content
-- Thread-safe data insertion
-- Stores:
-  - URLs
-  - Page content
-  - Titles
-  - Image links
+- 🌐 Web Crawling
+  - Crawl websites with configurable depth
+  - Concurrent URL processing
+  - Robust URL validation
 
-### 4. Ollama LLM Integration
-- Local model interaction via HTTP API
-- Methods for:
-  - Query intent extraction
-  - Semantic search
-  - Contextual result generation
-  - Natural language interaction
+- 🤖 Local LLM Integration
+  - Multiple Ollama model support
+  - Semantic query understanding
+  - Natural language search and interaction
 
-## Key Methods
+- 💾 Persistent Storage
+  - SQLite database for storing crawled content
+  - Thread-safe data management
 
-### `crawl_page()`
-- Recursive web page crawling
-- Content extraction
-- Database storage
-- Link discovery
+- 🔍 Advanced Search Capabilities
+  - Semantic search beyond keyword matching
+  - Contextual result ranking
+  - Relevance-based result presentation
 
-### `semantic_search()`
-- Uses Ollama LLM for query understanding
-- Database search based on semantic terms
-- Relevance assessment of results
+## Supported Ollama Models
 
-### `interactive_chat()`
-- Combines semantic search with LLM
-- Generates comprehensive responses
-- Contextualizes search results
+- Llama3.1
+- Mistral
+- Neural Chat
+- OpenHermes
+- Zephyr
 
-## Interaction Flow
-1. Model Selection
-2. Website Crawling
-3. Search or Chat Modes
+## Prerequisites
+
+### System Requirements
+- Python 3.8+
+- 16GB RAM
+- Modern CPU
+- 10GB+ disk space for models
+
+### Installation
+
+1. Install Ollama
+```bash
+# macOS/Linux
+curl https://ollama.ai/install.sh | sh
+
+# Windows
+# Download from https://ollama.ai/download
+```
+
+2. Pull Ollama Models
+```bash
+ollama pull llama3.1
+ollama pull mistral
+ollama pull neural-chat
+ollama pull openhermes
+ollama pull zephyr
+```
+
+3. Install Python Dependencies
+```bash
+pip install requests beautifulsoup4
+```
+
+## Usage
+
+1. Start Ollama server
+2. Run the Python script
+3. Select:
+   - Ollama model
+   - Website to crawl
+4. Interact through menu-driven interface
+
+### Interaction Modes
+
+1. **Ask a Question**
    - Natural language query
-   - Retrieve contextual results
-   - LLM-powered response generation
+   - LLM generates comprehensive response
+   - Contextual insights from crawled data
 
-## Technical Innovations
-- Local LLM processing
-- Concurrent web crawling
-- Semantic search beyond keywords
-- Flexible, extensible architecture
+2. **Semantic Search**
+   - Retrieve and rank relevant web content
+   - View URL, title, and content snippets
+
+## Technical Architecture
+
+```
+Web URL → Crawler → BeautifulSoup 
+           ↓          Parsing
+    SQLite Database ← Content Storage
+           ↓
+    Ollama LLM ← Semantic Analysis
+           ↓
+    Natural Language Interface
+```
+
+## Workflow
+
+1. Website Crawling
+   - Validate and sanitize URLs
+   - Extract text, titles, images
+   - Store in SQLite database
+   - Concurrent processing
+
+2. Semantic Search
+   - Query intent extraction
+   - Database search
+   - LLM-powered relevance ranking
+
+3. Interactive Chat
+   - Contextual search results
+   - LLM generates human-like responses
+
+## Potential Improvements
+
+- Enhanced error handling
+- Advanced caching mechanisms
+- More configurable model parameters
+- Support for additional Ollama models
+
+## Limitations
+
+- Requires local Ollama setup
+- Performance depends on model and system resources
+- Crawling limited by website policies
+
+## Contributing
+
+1. Fork the repository
+2. Create feature branch
+3. Commit changes
+4. Push to branch
+5. Create pull request
+
+## License
+
+[Specify your license, e.g., MIT]
+
+## Disclaimer
+
+Respect website terms of service and robots.txt when crawling.
+
+## Contact
+
+[Your Contact Information]
