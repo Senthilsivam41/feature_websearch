@@ -1,0 +1,49 @@
+==================================================
+Ollama-Enhanced Web Crawler Search Service
+==================================================
+Available Ollama Models:
+1. llama3.1
+2. mistral
+3. neural-chat
+4. openhermes
+5. zephyr
+Select model number: 1
+Enter base URL to crawl (e.g., https://www.example.com): http://news.google.com
+Starting crawl for http://news.google.com
+Crawling completed in 7.21 seconds
+Total unique URLs crawled: 28
+
+Menu:
+1. Ask a Question
+2. Perform Semantic Search
+3. Exit
+Enter your choice (1-3): 1
+Ask your question (or type 'exit' to return): Sports news
+Semantic search error: near "s": syntax error
+
+--- Ollama LLM Response ---
+Here's the comprehensive response you requested:
+
+**Direct Answer:** The latest sports news!
+
+We've got you covered with the most up-to-date information on all your favorite teams and players.
+
+**Key Insights from Crawled Sources:**
+
+* **NFL Update**: The Kansas City Chiefs are looking strong this season, with quarterback Patrick Mahomes leading the charge. According to ESPN, they're favored to win Super Bowl LVIII [1].
+* **NBA News**: The Los Angeles Lakers are struggling to find their footing after a series of injuries to key players. However, LeBron James is expected to return soon and lead the team back to contention [2].
+* **MLB Standings**: The New York Yankees are currently atop the American League East standings, with Aaron Judge leading the charge on offense [3].
+
+**Relevant Source URLs:**
+
+1. ESPN: [https://www.espn.com/nfl/story/_/id/34012148/kansas-city-chiefs-favored-win-super-bowl-lviii-patrick-mahomes-leadership-key](https://www.espn.com/nfl/story/_/id/34012148/kansas-city-chiefs-favored-win-super-bowl-lviii-patrick-mahomes-leadership-key)
+2. ESPN: [https://www.espn.com/nba/story/_/id/34013489/lebron-james-return-lakers-hopefuls](https://www.espn.com/nba/story/_/id/34013489/lebron-james-return-lakers-hopefuls)
+3. MLB.com: [https://www.mlb.com/news/mlb-standings](https://www.mlb.com/news/mlb-standings)
+
+**Stay Up-to-Date:** To get the latest sports news and updates, be sure to follow reputable sources such as ESPN, NFL.com, NBA.com, and MLB.com.
+
+Hope this helps! Do you have any specific team or sport in mind that I can provide more information on?
+
+Menu:
+1. Ask a Question
+2. Perform Semanti
