@@ -24,6 +24,7 @@ class OllamaWebCrawlerService:
         
         # Crawler Configuration
         self.base_url = base_url
+        self.base_domain = urllib.parse.urlparse(base_url).netloc
         self.max_depth = max_depth
         self.visited_urls = set()
         self.db_lock = threading.Lock()
@@ -91,14 +92,12 @@ class OllamaWebCrawlerService:
             return url
     
     def is_valid_url(self, url: str) -> bool:
-        """Check if URL is valid and within the same domain"""
+        """Check if URL is valid, within the same domain and has not already been visited"""
         try:
-            parsed_base = urllib.parse.urlparse(self.base_url)
             parsed_url = urllib.parse.urlparse(url)
-            
             return (
                 parsed_url.scheme in ['http', 'https'] and
-                parsed_base.netloc in parsed_url.netloc and
+                parsed_url.netloc == self.base_domain and  # Check if same domain
                 url not in self.visited_urls
             )
         except Exception:
@@ -130,6 +129,7 @@ class OllamaWebCrawlerService:
         
         try:
             response = requests.get(url, timeout=10)
+            response.raise_for_status() # Raise exception for bad status code
             soup = BeautifulSoup(response.text, 'html.parser')
             
             # Extract and store page content
@@ -167,8 +167,11 @@ class OllamaWebCrawlerService:
                     ]
                     concurrent.futures.wait(futures)
         
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching {url}: {e}")
         except Exception as e:
             print(f"Error crawling {url}: {e}")
+
     
     def start_crawling(self):
         """Start the web crawling process"""
@@ -298,7 +301,7 @@ def main():
     
     # Available Ollama Models
     available_models = [
-        "llama2", 
+        "llama3.1", 
         "mistral", 
         "neural-chat", 
         "openhermes", 
